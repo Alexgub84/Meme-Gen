@@ -3,31 +3,34 @@
 
 var gImgs = [
 
-    { id: 1, url: 'images/1.jpg', keywords: [] },
-    { id: 2, url: 'images/2.jpg', keywords: [] },
-    { id: 3, url: 'images/3.jpg', keywords: [] },
-    { id: 4, url: 'images/4.jpg', keywords: [] },
-    { id: 5, url: 'images/5.jpg', keywords: [] },
-    { id: 6, url: 'images/6.jpg', keywords: [] },
-    { id: 7, url: 'images/7.jpg', keywords: [] },
-    { id: 8, url: 'images/8.jpg', keywords: [] },
-    { id: 9, url: 'images/9.jpg', keywords: [] },
-    { id: 10, url: 'images/10.jpg', keywords: [] },
-    { id: 11, url: 'images/11.jpg', keywords: [] },
-    { id: 12, url: 'images/12.jpg', keywords: [] },
-    { id: 13, url: 'images/13.jpg', keywords: [] },
-    { id: 14, url: 'images/14.jpg', keywords: [] },
-    { id: 15, url: 'images/15.jpg', keywords: [] },
-    { id: 16, url: 'images/16.jpg', keywords: [] },
-    { id: 17, url: 'images/17.jpg', keywords: [] },
-    { id: 18, url: 'images/18.jpg', keywords: [] },
-    { id: 19, url: 'images/19.jpg', keywords: [] },
-    { id: 20, url: 'images/20.jpg', keywords: [] },
-    { id: 21, url: 'images/21.jpg', keywords: [] },
-    { id: 22, url: 'images/22.jpg', keywords: [] },
+    { id: 1, url: 'images/1.jpg', keywords: ['politics', 'arrogant'] },
+    { id: 2, url: 'images/2.jpg', keywords: ['nature'] },
+    { id: 3, url: 'images/3.jpg', keywords: ['animals', 'cute', 'baby'] },
+    { id: 4, url: 'images/4.jpg', keywords: ['animals'] },
+    { id: 5, url: 'images/5.jpg', keywords: ['baby', 'success'] },
+    { id: 6, url: 'images/6.jpg', keywords: ['stupid', 'funny'] },
+    { id: 7, url: 'images/7.jpg', keywords: ['baby', 'funny'] },
+    { id: 8, url: 'images/8.jpg', keywords: ['stupid'] },
+    { id: 9, url: 'images/9.jpg', keywords: ['baby', 'laugh'] },
+    { id: 10, url: 'images/10.jpg', keywords: ['success', 'laugh'] },
+    { id: 11, url: 'images/11.jpg', keywords: ['sport', 'funny'] },
+    { id: 12, url: 'images/12.jpg', keywords: ['demanding'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['success'] },
+    { id: 14, url: 'images/14.jpg', keywords: ['enlightening'] },
+    { id: 15, url: 'images/15.jpg', keywords: ['selfish'] },
+    { id: 16, url: 'images/16.jpg', keywords: ['laugh', 'success'] },
+    { id: 17, url: 'images/17.jpg', keywords: ['politics'] },
+    { id: 18, url: 'images/18.jpg', keywords: ['cartoon', 'hero'] },
+    { id: 19, url: 'images/19.jpg', keywords: ['funny', 'stupid'] },
+    { id: 20, url: 'images/20.jpg', keywords: ['hero'] },
+    { id: 21, url: 'images/21.jpg', keywords: ['funny', 'stupid', 'evil'] },
+    { id: 22, url: 'images/22.jpg', keywords: ['baby', 'funny'] },
 
 ];
 var gMeme = {};
+
+var gSearchResults = { funny: 3, hero: 4, cartoon: 2 }
+
 
 function creatNewLine(lineObj) {
     const { x, y, txt, font, size, align, color } = lineObj;
@@ -104,4 +107,12 @@ function getImgUrl() {
 
 function downloadImg() {
 
+}
+
+function getSearchResults() {
+    return gSearchResults;
+}
+
+function updateSearchResults(key) {
+    gSearchResults[key] = (gSearchResults[key]) ? gSearchResults[key] + 1 : 1;
 }

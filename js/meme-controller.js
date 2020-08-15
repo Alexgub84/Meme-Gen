@@ -13,7 +13,7 @@ var gDefaultLine = {
     x: 0,
     y: 0,
     font: gUserTextPref.font,
-    txt: ' ',
+    txt: 'New',
     size: gUserTextPref.size,
     align: gUserTextPref.align,
     color: gUserTextPref.color
@@ -137,6 +137,12 @@ function drawBackGround() {
     gCtx.globalAlpha = 1.0;
 }
 
+function onSetFilter(value) {
+    gUserTextPref.font = value;
+    editCurrLineByKey('font', value);
+    drawAllLinesOnCanvas();
+}
+
 function onFontSizeChange(delta) {
     changeFont(delta);
     gInterval = setInterval(changeFont, 100, delta)
@@ -145,7 +151,6 @@ function onFontSizeChange(delta) {
 function onFontSizeChangeStop() {
     clearInterval(gInterval);
 }
-
 
 function changeFont(delta) {
     const lineObj = getCurrLineObj();

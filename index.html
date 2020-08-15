@@ -11,6 +11,7 @@
 </head>
 
 <body onload="init()">
+    <div class="screen" onclick="toggleMenu()"></div>
     <header class="main-header">
         <div class="main-container flex container space-between  align-center ">
             <div class="logo">Meme Gen</div>
@@ -30,9 +31,15 @@
         <section class="search-bar"></section>
 
         <section class="main-gallery">
-            <div class="gallery-grid container">
+            <div class="search-container container flex align-center space-between">
+                <input type="text" id="search-input" oninput="onSearchInput()" placeholder="Enter search keyword">
+                <div class="keywords-box">
+                </div>
             </div>
-
+            <div class="main-gallery container">
+                <div class="gallery-grid">
+                </div>
+            </div>
         </section>
 
         <section class="main-canvas flex center hidden">
@@ -41,12 +48,23 @@
                 <input type="text" id="text-input" class="panel" oninput="onTextInput()" placeholder="Enter text">
                 <div class="panel lines-panel">
                     <button class="line-btn add-line" onclick="onAddLine()"><i class="fas fa-plus"></i></button>
-                    <button class="line-btn switch-line" onclick="onSwitchLine()"><i class="fas fa-sort-alt"></i></button>
+                    <button class="line-btn switch-line" onclick="onSwitchLine()"><i class="fas fa-sort"></i></button>
                     <button class="line-btn delete-line" onclick="onDeleteLine()"><i class="far fa-trash-alt"></i></button>
                 </div>
                 <div class=" panel font-panel">
+                    <select class="font-list" onchange="onSetFilter(this.value)">
+                        <option value="IMPACT">Impact</option>
+                        <option value="Baloo">Baloo</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Arial">Arial</option>
+                        
+                    </select>
                     <button class="line-btn font font-up" onmousedown="onFontSizeChange(+1)" onmouseup="onFontSizeChangeStop()"><i class="fas fa-font">+</i></button>
                     <button class="line-btn font font-down" onmousedown="onFontSizeChange(-1)" onmouseup="onFontSizeChangeStop()"><i class="fas fa-font">-</i></button>
+                    <button class="line-btn font color" onclick="onSetColor()"></i></button>
+                    <!-- <label for="color">Font color:</label>
+                    <input type="color" if="color" value="#000000" hidden/> -->
                 </div>
                 <div class="panel location-panel">
                     <button class="line-btn align-left" onclick="onChangeAlign('left')"><i class="fas fa-align-left"></i></button>
@@ -58,7 +76,7 @@
                 </div>
                 <div class="panel share-panel">
                     <!-- <button class="download-btn" onclick="downloadImg()" download="my-img.jpg"><i class="fas fa-download"></i></button> -->
-                    <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg"><i class="fas fa-download"></a> -->
+                    <a href="#" class="download-btn" onclick="downloadImg(this)" download="my-img.png"><i class="fas fa-download"></i></a>
                 </div>
             </div>
         </section>
