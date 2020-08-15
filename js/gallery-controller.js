@@ -37,10 +37,17 @@ function renderSearchResults() {
     const searchResults = getSearchResults();
     var htmlStr = '';
     for (const key in searchResults) {
-        const str = ` <span style="font-size:${searchResults[key]*10}px;">${key}</span>`;
+        const str = ` <span class="search-result" style="font-size:${searchResults[key]*10}px;" onclick="onSearchClicked(this)">${key}</span>`;
         htmlStr += str;
     }
     document.querySelector('.keywords-box').innerHTML = htmlStr;
+}
+
+function onSearchClicked(txt) {
+    updateSearchResults(txt.innerText);
+    document.querySelector('#search-input').value = txt.innerText;
+    renderGallery(txt.innerText);
+
 }
 
 function openGallery() {

@@ -134,6 +134,10 @@ img:hover {
     align-items: center;
 }
 
+.search-result:hover {
+    cursor: pointer;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -321,6 +325,16 @@ footer {
     .nav-btn {
         border-bottom: 1px solid grey;
         background-color: #949494;
+    }
+    .search-container {
+        flex-direction: column;
+        height: 100px;
+    }
+    #search-input {
+        width: 200px;
+    }
+    .keywords-box {
+        height: 50px;
     }
     .main-canvas {
         flex-direction: column;
