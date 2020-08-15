@@ -10,26 +10,70 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
-    <nav>
-        <ul>
-            <li><a class="active" href="">Gallery</a></li>
-            <li><a class="memes" href="">Memes</a></li>
-            <li><a class="about" href="">About</a></li>
-        </ul>
-    </nav>
-    <header>
+<body onload="init()">
+    <header class="main-header">
+        <div class="main-container flex container space-between  align-center ">
+            <div class="logo">Meme Gen</div>
+            <div class="nav-container">
+                <button class="gallery nav-btn" onclick="openGallery();toggleMenu()">Gallery</button>
+                <button class="memes nav-btn" onclick="openMemes();toggleMenu()">Memes</button>
+                <button class="about nav-btn" onclick="openAbout();toggleMenu()">About</button>
+                <!-- <li><a class="gallery active"" href="">Gallery</a></li>
+                    <li><a class="memes  href="">Memes</a></li>
+                    <li><a class="about" href="">About</a></li> -->
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()"><span></span></button>
+
+        </div>
     </header>
-
     <main>
+        <section class="search-bar"></section>
+
+        <section class="main-gallery">
+            <div class="gallery-grid container">
+            </div>
+
+        </section>
+
+        <section class="main-canvas flex center hidden">
+            <canvas id="canvas" height="540" width="540" style="border: 1px solid black;" onmousedown="onTouchStart(event)" onmouseup="onTouchEnd(event)" onmousemove="onTouchMove(event)"></canvas>
+            <div class="control-panel flex flex-column align-center ">
+                <input type="text" id="text-input" class="panel" oninput="onTextInput()" placeholder="Enter text">
+                <div class="panel lines-panel">
+                    <button class="line-btn add-line" onclick="onAddLine()"><i class="fas fa-plus"></i></button>
+                    <button class="line-btn switch-line" onclick="onSwitchLine()"><i class="fas fa-sort-alt"></i></button>
+                    <button class="line-btn delete-line" onclick="onDeleteLine()"><i class="far fa-trash-alt"></i></button>
+                </div>
+                <div class=" panel font-panel">
+                    <button class="line-btn font font-up" onmousedown="onFontSizeChange(+1)" onmouseup="onFontSizeChangeStop()"><i class="fas fa-font">+</i></button>
+                    <button class="line-btn font font-down" onmousedown="onFontSizeChange(-1)" onmouseup="onFontSizeChangeStop()"><i class="fas fa-font">-</i></button>
+                </div>
+                <div class="panel location-panel">
+                    <button class="line-btn align-left" onclick="onChangeAlign('left')"><i class="fas fa-align-left"></i></button>
+                    <button class="line-btn align-center" onclick="onChangeAlign('center')"><i class="fas fa-align-center"></i></button>
+                    <button class="line-btn align-right" onclick="onChangeAlign('right')"><i class="fas fa-align-right"></i></button>
+                    <button class="line-btn line-up" onmousedown="onMoveLine(-1)" onmouseup="onMoveLineStop()"><i class="fas fa-long-arrow-alt-up"></i></button>
+                    <button class="line-btn line-down" onmousedown="onMoveLine(+1)" onmouseup="onMoveLineStop()"><i class="fas fa-long-arrow-alt-down"></i></button>
+
+                </div>
+                <div class="panel share-panel">
+                    <!-- <button class="download-btn" onclick="downloadImg()" download="my-img.jpg"><i class="fas fa-download"></i></button> -->
+                    <!-- <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg"><i class="fas fa-download"></a> -->
+                </div>
+            </div>
+        </section>
+        <section class="main-about">
+
     </main>
-
-
     <footer>
         Alex Guberman - creating the Future
     </footer>
-    <script src="js/main.js">
-    </script>
+    <script src="https://kit.fontawesome.com/9763bd0156.js" crossorigin="anonymous"></script>
+
+    <script src="js/share-service.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
 </body>
 
 </html>

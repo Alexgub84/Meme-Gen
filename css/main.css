@@ -1,45 +1,179 @@
 * {
+    box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
 }
 
-header {
-    text-align: center;
-    font-size: 30px;
-}
 
-nav {}
+/* BASE */
 
-ul {
-    list-style-type: none;
+
+/* html {} */
+
+
+/* header {
+    margin-bottom: 20px;
+} */
+
+body {
+    font-size: 1rem;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
+}
+
+.nav-btn {
     background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
+    height: 75px;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    font-size: 2rem;
+    border: none;
 }
 
-li a:hover {
-    background-color: #111;
+.nav-btn:hover {
+    background-color: rgb(94, 91, 91);
+    /* border-radius: 10px; */
+    cursor: grab;
 }
 
-.about {
-    float: right;
+.nav-btn:focus {
+    outline: none;
 }
 
-.active {
-    background-color: #4CAF50;
+img {
+    width: 300px;
+    border-radius: 10px;
 }
+
+img:hover {
+    cursor: grab;
+}
+
+.mobile-menu-btn span {
+    content: url(/svg/bars-solid.svg);
+    display: none;
+}
+
+
+/* LAYOUT */
+
+.container {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* FONTS */
+
+@font-face {
+    font-family: IMPACT;
+    src: url(/fonts/ImpactRegularI.ttf);
+}
+
+
+/* COMPONENTS */
+
+
+/* header */
+
+.main-header {
+    width: 100%;
+    height: 75px;
+    font-size: 1.875rem;
+    background-color: #333;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.main-container {
+    height: 66px;
+}
+
+.main-container>.nav-btn {
+    height: 60px;
+}
+
+.logo {
+    color: azure;
+}
+
+
+/* main */
+
+
+/* gallery */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px 10px;
+    grid-auto-flow: dense;
+    margin-top: 20px;
+}
+
+.gallery-grid img {
+    place-self: center;
+}
+
+
+/* memes */
+
+.main-canvas {
+    background-color: #e3e3e3;
+}
+
+canvas {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.control-panel {
+    width: 400px;
+    height: 400px;
+}
+
+.panel {
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+#text-input {
+    width: 50%;
+    height: 60px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    padding: 21px;
+}
+
+
+/* .main-canvas>button {
+    height: 60px;
+    width: 60px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+} */
+
+.line-btn,
+.download-btn {
+    height: 60px;
+    width: 60px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+}
+
+i {
+    font-size: 2.3em;
+}
+
+.font>i {
+    display: inline;
+}
+
+
+/* footer */
 
 footer {
     position: fixed;
@@ -48,4 +182,116 @@ footer {
     width: 100%;
     background-color: gainsboro;
     text-align: center;
+}
+
+
+/* flex helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.center {
+    justify-content: center;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-baseline {
+    align-items: baseline;
+}
+
+
+/* hidden helper */
+
+.hidden {
+    display: none;
+}
+
+
+/* ------Media Queries------ */
+
+@media (max-width: 1080px) {
+    .container {
+        max-width: 960px;
+    }
+    .mobile-menu-btn {}
+}
+
+@media (max-width: 960px) {
+    .container {
+        max-width: 650px;
+    }
+    canvas {
+        height: 450px;
+        width: 450px;
+    }
+}
+
+@media (max-width: 800px) {
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 175px;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        transition: transform 0.8s;
+    }
+    .nav-btn {
+        border-bottom: 1px solid grey;
+        background-color: #949494;
+    }
+    .main-canvas {
+        flex-direction: column;
+        align-items: center;
+    }
+    canvas {
+        height: 330px;
+        width: 330px;
+        margin: 2px;
+    }
+    .control-panel {
+        height: 245px;
+        width: 330px;
+        justify-content: space-between;
+    }
+    .panel {
+        margin-bottom: 0;
+    }
+    #text-input {
+        width: 90%;
+        height: 39px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .line-btn {
+        height: 40px;
+        width: 40px;
+    }
+    i {
+        font-size: 1.125rem;
+    }
+    body.menu-open .nav-container {
+        transform: translateX(0);
+    }
 }
