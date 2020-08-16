@@ -1,5 +1,7 @@
 'use strict'
 
+
+
 function init() {
     renderGallery();
 }
@@ -21,7 +23,7 @@ function renderGallery(filter) {
             return element.keywords.some(element =>
                 element === filter);
         })
-        if (images.length > 0) updateSearchResults(filter);
+        if (images.length > 0) updateKeywordsResults(filter);
     }
     for (let i = 0; i < images.length; i++) {
         let image = images[i];
@@ -34,18 +36,22 @@ function renderGallery(filter) {
 }
 
 function renderSearchResults() {
-    const searchResults = getSearchResults();
+    const searchResults = getKeywordsResults();
     var htmlStr = '';
     for (const key in searchResults) {
-        const str = ` <span class="search-result" style="font-size:${searchResults[key]*10}px;" onclick="onSearchClicked(this)">${key}</span>`;
+        const maxFontSize = document.querySelector('.keywords-box').offsetHeight;
+        let fontSize = searchResults[key] * 5;
+        console.log(fontSize);
+        if (fontSize > maxFontSize) fontSize = maxFontSize;
+        const str = `<div class="keyword-result" style="line-height:${maxFontSize}px; 50px; font-size:${fontSize}px;" onclick="onKeywordClicked(this)">${key}</div>`;
         htmlStr += str;
     }
     document.querySelector('.keywords-box').innerHTML = htmlStr;
 }
 
-function onSearchClicked(txt) {
-    updateSearchResults(txt.innerText);
-    document.querySelector('#search-input').value = txt.innerText;
+function onKeywordClicked(txt) {
+    updateKeywordsResults(txt.innerText);
+    document.querySelector('#keyword-input').value = txt.innerText;
     renderGallery(txt.innerText);
 
 }
@@ -65,7 +71,7 @@ function openMemes() {
 }
 
 function onSearchInput() {
-    const txt = document.querySelector('#search-input').value;
+    const txt = document.querySelector('#keyword-input').value;
     console.log();
     renderGallery(txt);
 

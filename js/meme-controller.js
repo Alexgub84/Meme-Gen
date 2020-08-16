@@ -103,7 +103,6 @@ function drawAllLinesOnCanvas() {
     }
 }
 
-
 function drawBackGround() {
 
     const lineObj = getCurrLineObj();
@@ -149,6 +148,7 @@ function onFontSizeChange(delta) {
 }
 
 function onFontSizeChangeStop() {
+    ``
     clearInterval(gInterval);
 }
 
@@ -237,7 +237,6 @@ function onTouchEnd(ev) {
 function onChangeAlign(alignment) {
     const lineObj = getCurrLineObj();
     gCtx.font = `${lineObj.size}px ${lineObj.font}`;
-    const txtWidth = gCtx.measureText(lineObj.txt).width;
     switch (alignment) {
         case 'left':
             editCurrLineByKey('x', 20);
@@ -264,9 +263,7 @@ function onSwitchLine() {
 }
 
 function _scaleToFill(img) {
-    // get the scale
     var scale = Math.max(gCanvas.width / img.width, gCanvas.height / img.height);
-    // get the top left position of the image
     var x = (gCanvas.width / 2) - (img.width / 2) * scale;
     var y = (gCanvas.height / 2) - (img.height / 2) * scale;
     gCtx.drawImage(img, x, y, img.width * scale, img.height * scale);

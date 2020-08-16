@@ -30,7 +30,7 @@ body {
 .nav-btn:hover {
     background-color: rgb(94, 91, 91);
     /* border-radius: 10px; */
-    cursor: grab;
+    cursor: pointer;
 }
 
 .nav-btn:focus {
@@ -43,7 +43,7 @@ img {
 }
 
 img:hover {
-    cursor: grab;
+    cursor: pointer;
 }
 
 
@@ -109,13 +109,18 @@ img:hover {
 
 /* gallery */
 
-.search-container {
+.keyword-container {
     margin-top: 20px;
     height: 50px;
-    display: grid;
+    flex-flow: row nowrap;
 }
 
-#search-input {
+.keyword-result {
+    max-height: 100%;
+    font-size: 1em;
+}
+
+#keyword-input {
     width: 30%;
     height: 30px;
     border: none;
@@ -134,7 +139,11 @@ img:hover {
     align-items: center;
 }
 
-.search-result:hover {
+.keyword-result-text {
+    font-size: 1em;
+}
+
+.keyword-result:hover {
     cursor: pointer;
 }
 
@@ -326,11 +335,11 @@ footer {
         border-bottom: 1px solid grey;
         background-color: #949494;
     }
-    .search-container {
+    .keyword-container {
         flex-direction: column;
         height: 100px;
     }
-    #search-input {
+    #keyword-input {
         width: 200px;
     }
     .keywords-box {

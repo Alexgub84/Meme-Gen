@@ -29,7 +29,7 @@ var gImgs = [
 ];
 var gMeme = {};
 
-var gSearchResults = { funny: 3, hero: 4, cartoon: 2 }
+var gKeywordsResults = { funny: 3, hero: 4, cartoon: 2 }
 
 
 function creatNewLine(lineObj) {
@@ -109,10 +109,10 @@ function downloadImg() {
 
 }
 
-function getSearchResults() {
-    return gSearchResults;
+function getKeywordsResults() {
+    return gKeywordsResults;
 }
 
-function updateSearchResults(key) {
-    gSearchResults[key] = (gSearchResults[key]) ? gSearchResults[key] + 1 : 1;
+function updateKeywordsResults(key) {
+    gKeywordsResults[key] = (gKeywordsResults[key]) ? gKeywordsResults[key] + 1 : 1;
 }
